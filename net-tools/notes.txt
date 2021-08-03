@@ -1,0 +1,61 @@
+❯ sudo docker build -t jahnin/net-tools .
+Sending build context to Docker daemon  5.632kB
+Step 1/7 : FROM alpine
+latest: Pulling from library/alpine
+5843afab3874: Pull complete 
+Digest: sha256:adab3844f497ab9171f070d4cae4114b5aec565ac772e2f2579405b78be67c96
+Status: Downloaded newer image for alpine:latest
+ ---> d4ff818577bc
+Step 2/7 : LABEL maintainer Jahnin Rajamoni <emailjahnin@gmail.com>
+ ---> Running in 164b97b5a9b2
+Removing intermediate container 164b97b5a9b2
+ ---> 89e9ba8f914e
+Step 3/7 : COPY motd /etc/motd
+ ---> 3fc910915e95
+Step 4/7 : RUN apk add net-tools nano
+ ---> Running in 22a4c2a4b647
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/x86_64/APKINDEX.tar.gz
+(1/6) Installing libmagic (5.40-r1)
+(2/6) Installing ncurses-terminfo-base (6.2_p20210612-r0)
+(3/6) Installing ncurses-libs (6.2_p20210612-r0)
+(4/6) Installing nano (5.7-r2)
+(5/6) Installing mii-tool (1.60_git20140218-r2)
+(6/6) Installing net-tools (1.60_git20140218-r2)
+Executing busybox-1.33.1-r2.trigger
+OK: 14 MiB in 20 packages
+Removing intermediate container 22a4c2a4b647
+ ---> a10a92696659
+Step 5/7 : ENV PS1=" \[\033[1;36m\]\w >\[\033[1;34m\]>\[\033[0m\] "
+ ---> Running in 6829e183c79c
+Removing intermediate container 6829e183c79c
+ ---> eca0cdf2f85b
+Step 6/7 : EXPOSE 22
+ ---> Running in 5a05b9758ffd
+Removing intermediate container 5a05b9758ffd
+ ---> 487c69d22015
+Step 7/7 : ENTRYPOINT cat /etc/motd && /bin/sh
+ ---> Running in 33212f47d559
+Removing intermediate container 33212f47d559
+ ---> c0a9573e4038
+Successfully built c0a9573e4038
+Successfully tagged jahnin/net-tools:latest
+
+debian in debian in ~/firstapp took 8s 
+❯ sudo docker run -it jahnin/net-tools
+                                                                        
+  o   _.  |_   ._   o  ._    /  ._    _   _|_  __  _|_   _    _   |   _ 
+  |  (_|  | |  | |  |  | |  /   | |  (/_   |_       |_  (_)  (_)  |  _> 
+ _| 
+ / >> exit
+
+debian in debian in ~/firstapp took 4s 
+❯ sudo docker push jahnin/net-tools
+Using default tag: latest
+The push refers to repository [docker.io/jahnin/net-tools]
+8778c1bc0626: Pushed 
+1524cb809477: Pushed 
+72e830a4dff5: Layer already exists 
+latest: digest: sha256:559f21fc35098201be228cad249c0d28573d1a308ec76f208a35511304770dce size: 946
+
+debian in debian in ~/firstapp took 16s
